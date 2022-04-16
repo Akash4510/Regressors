@@ -1,8 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
-from forms import RegistrationForm, LoginForm
+from flask_wtf import FlaskForm
+from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from datetime import datetime
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "591b124ad04cd0a527c2b1b7bc186bc9"
@@ -11,9 +15,12 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = "login"
 
 
-class User(db.Model):
+# User model for our database
+class User(db.Model, UserMixin):
     """Users table in our database"""
 
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
@@ -28,9 +35,11 @@ class User(db.Model):
     posts = db.relationship("Post", backref="author", lazy=True)
 
     def __repr__(self):
-        return f"User(Username: {self.username}, Email: {self.email}, Image file: {self.image_file})"
+        return f"User(Name: {self.first_name} {self.last_name}, Username: {self.username}, Email: {self.email}, " \
+               f"Image file: {self.image_file})"
 
 
+# Post model for our database
 class Post(db.Model):
     """Post table in our database"""
 
@@ -46,14 +55,85 @@ class Post(db.Model):
         return f"Post(Title: {self.title}, Date posted: {self.date_posted})"
 
 
+# Registration form
+class RegistrationForm(FlaskForm):
+
+    first_name = StringField(
+        label="First Name",
+        render_kw={"placeholder": "Enter first name"},
+        validators=[DataRequired(), Length(min=2, max=30)]
+    )
+    last_name = StringField(
+        label="Last Name",
+        render_kw={"placeholder": "Enter last name"},
+        validators=[DataRequired(), Length(min=2, max=30)]
+    )
+    user_name = StringField(
+        label="Username",
+        render_kw={"placeholder": "Enter username"},
+        validators=[DataRequired(), Length(min=2, max=30)]
+    )
+    email = StringField(
+        label="Email",
+        render_kw={"placeholder": "Enter email"},
+        validators=[DataRequired(), Email()]
+    )
+    password = PasswordField(
+        label="Password",
+        render_kw={"placeholder": "Enter password"},
+        validators=[DataRequired(), Length(min=5)]
+    )
+    confirm_password = PasswordField(
+        "Confirm Password",
+        render_kw={"placeholder": "Confirm password"},
+        validators=[DataRequired(), EqualTo("password")]
+    )
+    submit = SubmitField(label="Sign Up")
+
+    def validate_user_name(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if user:
+            raise ValidationError("That username is already taken. Please choose a different one.")
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user:
+            raise ValidationError("That email is already taken. Please choose a different one.")
+
+
+# Login form
+class LoginForm(FlaskForm):
+
+    email = StringField(
+        label="Email",
+        render_kw={"placeholder": "Enter your email"},
+        validators=[DataRequired(), Email()]
+    )
+    password = PasswordField(
+        label="Password",
+        render_kw={"placeholder": "Enter your password"},
+        validators=[DataRequired(), Length(min=5)]
+    )
+    remember_me = BooleanField(label="Remember Me")
+    submit = SubmitField(label="Login")
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
 @app.route("/")
 def home():
-    return render_template("index.html")
+    posts = Post.query.all()
+    return render_template("index.html", posts=posts)
 
 
 @app.get("/signup")
 @app.post("/signup")
 def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for("home"))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode("utf-8")
@@ -74,14 +154,30 @@ def signup():
 @app.get("/login")
 @app.post("/login")
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("profile"))
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == "admin@email.com" and form.password.data == "admin_password":
-            flash("Login successful!", "success")
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            flash(f"Welcome back {user.username}!", "success")
             return redirect(url_for("home"))
         else:
-            flash("Login unsuccessful", "error")
+            flash("Login unsuccessful. Please check your email and password.", "error")
     return render_template("login.html", form=form)
+
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("home"))
+
+
+@app.route("/profile")
+@login_required
+def profile():
+    return render_template("profile.html")
 
 
 if __name__ == "__main__":

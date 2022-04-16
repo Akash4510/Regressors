@@ -1,0 +1,124 @@
+.posts-section {
+  background-color: var(--clr-gradient-start);
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: var(--clr-bg);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 1rem;
+}
+
+.post-author-profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  border: 2px solid var(--clr-primary);
+  object-fit: cover;
+  object-position: center;
+}
+
+.post-author-profile-img img {
+  border-radius: 50%;
+}
+
+.post-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.post-author-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--clr-text);
+}
+
+.post-date {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.post-img {
+  width: 100%;
+  height: 100px;
+  height: auto;
+  border-radius: 8px;
+  margin: 12px 0;
+  border: 1px solid var(--clr-primary);
+}
+
+.post-img img {
+  height: 350px;
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.post-title {
+  font-size: 1rem;
+  margin: 8px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-text {
+  font-size: 0.95rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-reaction {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 12px;
+  border-radius: 8px;
+  padding: 10px 0 5px 0;
+}
+
+.post-reaction-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  gap: 0.8rem;
+  background-color: var(--clr-gradient-start);
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.post-reaction-item-icon {
+  transition: 0.2s ease-in-out;
+}
+
+.post-reaction-item:hover .post-reaction-item-icon {
+  transform: scale(1.2);
+}

@@ -28,7 +28,7 @@
     {% block navbar %}
       <nav class="nav-bar">
         <div class="container">
-          <a href="#" class="logo">Reg<span>ress</span>ors</a>
+          <a href="{{ url_for('home') }}" class="logo">Reg<span>ress</span>ors</a>
 
           <div class="search-box">
             <input type="text" class="search-txt" placeholder="Search" />
@@ -38,8 +38,15 @@
           </div>
 
           <div class="menu">
+            {% if current_user.is_authenticated %}
               <div class="menu-icon notifications-btn"><i class="fas fa-bell"></i></div>
-              <div class="profile-btn"><i class="profile-icon fas fa-user"></i><a href="{{ url_for('signup') }}"><span class="user-name">User</span></a></div>
+              <div class="profile-btn"><i class="profile-icon fas fa-user"></i><a href="{{ url_for('login') }}"><span class="user-name">{{ current_user.username }}</span></a></div>
+
+            {% else %}
+              <div class="btn btn-secondary"><a href="{{ url_for('signup') }}">Signup</a></div>
+              <div class="btn btn-primary"><a href="{{ url_for('login') }}">Login</a></div>
+            {% endif %}
+
           </div>
         </div>
       </nav>
@@ -73,13 +80,6 @@
     </section>
     {% endblock footer %}
     <!-- Footer ends -->
-
-    <!-- JQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
 
     <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

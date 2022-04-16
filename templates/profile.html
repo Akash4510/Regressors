@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+  {% block css_stylesheets %}
+    {{ super() }}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/profile.css') }}"
+    />
+  {% endblock css_stylesheets %}
+
+  {% block body_content %}
+    <section class="profile-page-main-section">
+      <div class="container">
+        <div class="profile-header">
+          <div class="profile-img">
+            <img src="{{ url_for('static', filename='img/profile-pic.jpg') }}" alt="" />
+          </div>
+
+          <div class="user-details">
+            <h1 class="user-name">{{ current_user.username }}</h1>
+            <h2 class="full-name">{{ current_user.first_name + ' ' + current_user.last_name }}</h1>
+            <h3 class="user-email">{{ current_user.email }}</h3>
+          </div>
+
+          <!-- Create a logout button -->
+          <a href="{{ url_for('logout') }}" class="btn btn-secondary logout-btn">Logout</a>
+        </div>
+
+        <section class="about-user">
+          <div class="container">
+            <h2 class="about-heading">About {{ current_user.username }}</h2>
+            <p class="about-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam architecto id eum commodi! Libero a, sit officia molestiae cupiditate est placeat eveniet nisi velit optio quae ad odit? Eligendi accusamus quam suscipit, accusantium nisi reprehenderit, natus perspiciatis odit est incidunt possimus repudiandae ab! Ut reiciendis harum quae quibusdam iste. Blanditiis suscipit obcaecati totam quam alias ipsam exercitationem tenetur eum quae recusandae. Quas, repellendus vero minima, laborum dolores obcaecati excepturi cumque neque inventore tempore corrupti molestias animi provident autem officia doloremque enim, quia nisi ad error mollitia corporis? In expedita pariatur fugiat eveniet incidunt iusto, doloremque porro molestiae necessitatibus et laboriosam.</p>
+          </div>
+        </section>
+
+        <section class="projects-section">
+          <div class="container">
+            <h1>Projects</h1>
+            <div class="cards-container">
+              <div class="card">
+                <img src="{{ url_for('static', filename='img/img-1.jpg') }}" alt="" class="card-img" />
+                <h2 class="card-title">Project 1</h2>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
+                  nemo optio. Amet, fugit sit saepe quidem libero incidunt
+                  architecto corrupti nam perferendis consequatur perspiciatis sequi
+                  aliquid sapiente. Sapiente et provident neque laborum. Totam
+                  cupiditate id, autem vitae repellendus quaerat molestiae!
+                </p>
+                <button class="btn btn-secondary card-btn">
+                  View Project<span><i class="fa-solid fa-arrow-right"></i></span>
+                </button>
+              </div>
+              <div class="card">
+                <img src="{{ url_for('static', filename='img/img-2.jpg') }}" alt="" class="card-img" />
+                <h2 class="card-title">Project 2</h2>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
+                  nemo optio. Amet, fugit sit saepe quidem libero incidunt
+                  architecto corrupti nam perferendis consequatur perspiciatis sequi
+                  aliquid sapiente. Sapiente et provident neque laborum. Totam
+                  cupiditate id, autem vitae repellendus quaerat molestiae!
+                </p>
+                <button class="btn btn-secondary card-btn">
+                  View Project<span><i class="fa-solid fa-arrow-right"></i></span>
+                </button>
+              </div>
+              <div class="card">
+                <img src="{{ url_for('static', filename='img/img-3.jpg') }}" alt="" class="card-img" />
+                <h2 class="card-title">Project 3</h2>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
+                  nemo optio. Amet, fugit sit saepe quidem libero incidunt
+                  architecto corrupti nam perferendis consequatur perspiciatis sequi
+                  aliquid sapiente. Sapiente et provident neque laborum. Totam
+                  cupiditate id, autem vitae repellendus quaerat molestiae!
+                </p>
+                <button class="btn btn-secondary card-btn">
+                  View Project<span><i class="fa-solid fa-arrow-right"></i></span>
+                </button>
+              </div>
+              <div class="card">
+                <img src="{{ url_for('static', filename='img/img-1.jpg') }}" alt="" class="card-img" />
+                <h2 class="card-title">Project 4</h2>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit,
+                  nemo optio. Amet, fugit sit saepe quidem libero incidunt
+                  architecto corrupti nam perferendis consequatur perspiciatis sequi
+                  aliquid sapiente. Sapiente et provident neque laborum. Totam
+                  cupiditate id, autem vitae repellendus quaerat molestiae!
+                </p>
+                <button class="btn btn-secondary card-btn">
+                  View Project<span><i class="fa-solid fa-arrow-right"></i></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+      
+  {% endblock body_content %}

@@ -9,6 +9,7 @@
   --clr-text: hsl(244, 66%, 17%);
 
   --clr-accent: hsl(270, 84%, 87%);
+  --clr-warning: hsl(51, 87%, 79%);
   --clr-error: hsl(0, 80%, 84%);
 
   --clr-gradient-start: hsl(218, 90%, 96%);
@@ -230,6 +231,18 @@ section h1 {
   font-size: 1.45rem;
 }
 
+.nav-link {
+  color: var(--clr-text);
+  transition: 0.3s ease;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+.nav-link:hover {
+  color: var(--clr-primary);
+  background-color: var(--clr-gradient-start);
+}
+
 .flash-messages {
   display: flex;
   align-items: center;
@@ -243,6 +256,8 @@ section h1 {
   width: 100%;
   border-radius: 10px;
   font-weight: 500;
+  background: var(--clr-accent);
+  color: var(--clr-primary-dark);
   text-align: center;
   transition: 0.3s ease-in;
 }
@@ -252,9 +267,18 @@ section h1 {
   color: var(--clr-primary-dark);
 }
 
+.flash-message.warning {
+  background: var(--clr-warning);
+  color: var(--clr-text);
+}
+
 .flash-message.error {
   background: var(--clr-error);
   color: rgb(232, 47, 47);
+}
+
+.flash-message.hidden {
+  display: none;
 }
 
 .footer {

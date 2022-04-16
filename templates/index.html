@@ -1,1 +1,215 @@
 {% extends "layout.html" %}
+
+  {% block css_stylesheets %}
+    {{ super() }}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/post.css') }}"
+    />
+  {% endblock css_stylesheets %}
+
+  {% block body_content %}
+    <section class="post-section">
+      <div class="container">
+        <div class="posts-container">
+          <!-- {% for post in posts %} -->
+          <div class="post">
+            <div class="post-header">
+              <div class="post-author-profile-img">
+                <a href="#"
+                  ><img
+                    src="{{ url_for('static', filename='img/profile-pic.jpg') }}"
+                    alt=""
+                /></a>
+              </div>
+              <div class="post-info">
+                <a href="#" class="post-author-name">Author</a>
+                <span class="post-date">16-04-2022</span>
+              </div>
+            </div>
+            <div class="post-img">
+              <img src="{{ url_for('static', filename='img/img-1.jpg') }}" alt="" />
+            </div>
+            <div class="post-content">
+              <div class="post-title">
+                <h2>This is a post title</h2>
+              </div>
+              <div class="post-text">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
+                  ratione unde dolores possimus. Est neque vitae magnam rerum,
+                  accusantium provident temporibus similique sit modi consectetur
+                  pariatur cum quibusdam delectus ipsum voluptas odio distinctio
+                  dolores quos vel consequatur placeat quidem! Eligendi, fuga eaque?
+                  Suscipit minima minus natus delectus sit eum nihil, similique
+                  eligendi dolores omnis, alias a esse reprehenderit veniam iure.
+                  Molestias, laborum odit? Itaque iusto beatae dolor quidem, a
+                  fugiat amet corporis unde aspernatur, magni natus qui? Recusandae
+                  nobis, velit voluptate, atque adipisci quae vero ratione
+                  repudiandae aut, voluptatibus alias ad. Impedit ad, vel nisi fugit
+                  aspernatur enim voluptates magni?
+                </p>
+              </div>
+              <div class="post-reaction">
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-thumbs-up"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Like</span>
+                  </div>
+                </div>
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-thumbs-down"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Dislike</span>
+                  </div>
+                </div>
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-comment"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Comment</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="post">
+            <div class="post-header">
+              <div class="post-author-profile-img">
+                <a href="#"
+                  ><img
+                    src="{{ url_for('static', filename='img/profile-pic.jpg') }}"
+                    alt=""
+                /></a>
+              </div>
+              <div class="post-info">
+                <a href="#" class="post-author-name">Author</a>
+                <span class="post-date">16-04-2022</span>
+              </div>
+            </div>
+            <div class="post-img">
+              <img src="{{ url_for('static', filename='img/img-2.jpg') }}" alt="" />
+            </div>
+            <div class="post-content">
+              <div class="post-title">
+                <h2>This is a post title</h2>
+              </div>
+              <div class="post-text">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
+                  ratione unde dolores possimus. Est neque vitae magnam rerum,
+                  accusantium provident temporibus similique sit modi consectetur
+                  pariatur cum quibusdam delectus ipsum voluptas odio distinctio
+                  dolores quos vel consequatur placeat quidem! Eligendi, fuga eaque?
+                  Suscipit minima minus natus delectus sit eum nihil, similique
+                  eligendi dolores omnis, alias a esse reprehenderit veniam iure.
+                  Molestias, laborum odit? Itaque iusto beatae dolor quidem, a
+                  fugiat amet corporis unde aspernatur, magni natus qui? Recusandae
+                  nobis, velit voluptate, atque adipisci quae vero ratione
+                  repudiandae aut, voluptatibus alias ad. Impedit ad, vel nisi fugit
+                  aspernatur enim voluptates magni?
+                </p>
+              </div>
+              <div class="post-reaction">
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-thumbs-up"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Like</span>
+                  </div>
+                </div>
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-thumbs-down"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Dislike</span>
+                  </div>
+                </div>
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-comment"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Comment</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="post">
+            <div class="post-header">
+              <div class="post-author-profile-img">
+                <a href="#"
+                  ><img
+                    src="{{ url_for('static', filename='img/profile-pic.jpg') }}"
+                    alt=""
+                /></a>
+              </div>
+              <div class="post-info">
+                <a href="#" class="post-author-name">Author</a>
+                <span class="post-date">16-04-2022</span>
+              </div>
+            </div>
+            <div class="post-img">
+              <img src="{{ url_for('static', filename='img/img-3.jpg') }}" alt="" />
+            </div>
+            <div class="post-content">
+              <div class="post-title">
+                <h2>This is a post title</h2>
+              </div>
+              <div class="post-text">
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
+                  ratione unde dolores possimus. Est neque vitae magnam rerum,
+                  accusantium provident temporibus similique sit modi consectetur
+                  pariatur cum quibusdam delectus ipsum voluptas odio distinctio
+                  dolores quos vel consequatur placeat quidem! Eligendi, fuga eaque?
+                  Suscipit minima minus natus delectus sit eum nihil, similique
+                  eligendi dolores omnis, alias a esse reprehenderit veniam iure.
+                  Molestias, laborum odit? Itaque iusto beatae dolor quidem, a
+                  fugiat amet corporis unde aspernatur, magni natus qui? Recusandae
+                  nobis, velit voluptate, atque adipisci quae vero ratione
+                  repudiandae aut, voluptatibus alias ad. Impedit ad, vel nisi fugit
+                  aspernatur enim voluptates magni?
+                </p>
+              </div>
+              <div class="post-reaction">
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-thumbs-up"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Like</span>
+                  </div>
+                </div>
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-thumbs-down"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Dislike</span>
+                  </div>
+                </div>
+                <div class="post-reaction-item">
+                  <div class="post-reaction-item-icon">
+                    <i class="fas fa-comment"></i>
+                  </div>
+                  <div class="post-reaction-item-text">
+                    <span>Comment</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- {% endfor %} -->
+        </div>
+      </div>
+    </section>
+  {% endblock body_content %}
