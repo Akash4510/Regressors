@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --clr-primary: hsl(271, 76%, 53%);
+  --clr-primary-dark: hsl(271, 76%, 43%);
+  --clr-primary-light: hsl(271, 76%, 73%);
+  --clr-secondary: hsl(217, 90%, 95%);
+  --clr-bg: hsl(0, 0%, 99%);
+  --clr-text: hsl(244, 66%, 17%);
+
+  --clr-gradient-start: hsl(218, 90%, 96%);
+  --clr-gradient-end: var(--clr-bg);
+
+  --gradient-background: linear-gradient(
+    180deg,
+    var(--clr-gradient-start) 0%,
+    var(--clr-gradient-end) 100%
+  );
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--clr-primary);
+  color: var(--clr-bg);
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  color: var(--clr-text);
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  padding: 2rem 0 3rem;
+}
+
+section h1 {
+  font-size: 2rem;
+  margin: 10px 0 20px 0;
+}
+
+.container {
+  max-width: 96%;
+  margin: auto;
+}
+
+.nav-bar {
+  position: sticky;
+  top: 0;
+  padding: 12px 0;
+  background-color: var(--clr-bg);
+  box-shadow: 0 0.3px 8px hsla(0, 2%, 12%, 0.108);
+  z-index: 100;
+}
+
+.nav-bar.shadow {
+  background-color: hsla(0, 0%, 99%, 0.978);
+  box-shadow: 0 2px 4px 1px hsla(0, 2%, 12%, 0.19);
+}
+
+.nav-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu,
+.nav-bar ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--clr-text);
+}
+
+.logo span {
+  color: var(--clr-primary);
+}
+
+.nav-link {
+  color: var(--clr-text);
+  transition: 0.3s ease;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+.nav-link:hover {
+  color: var(--clr-primary);
+  background-color: var(--clr-gradient-start);
+}
+
+.btn {
+  padding: 6px 15px;
+  border: 1px solid;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn a {
+  color: var(--clr-text);
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--clr-primary);
+  border-color: var(--clr-primary);
+}
+
+.btn-primary,
+.btn-primary a {
+  color: var(--clr-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--clr-primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--clr-secondary);
+  border-color: var(--clr-primary);
+}
+
+.btn-secondary,
+.btn-secondary a {
+  color: var(--clr-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--clr-bg);
+}
+
+.search-box {
+  padding: 8px 10px;
+  border: 1px solid var(--clr-primary-light);
+  border-radius: 12px;
+}
+
+.search-box input {
+  width: 450px;
+}
+
+.search-box input,
+.search-box input:focus {
+  outline: none !important;
+  border: none !important;
+}
+
+.menu-icon {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: var(--clr-gradient-start);
+  padding: 8px 12px;
+  transition: 0.3s ease;
+}
+
+.profile-btn {
+  border-radius: 20px;
+  padding-right: 12px;
+  border: 1px solid var(--clr-primary-light);
+  background-color: var(--clr-gradient-start);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: 0.3s ease;
+}
+
+.profile-icon {
+  border-radius: 50%;
+  background-color: var(--clr-gradient-start);
+  padding: 8px 12px;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 0.985rem;
+}
+
+.menu i {
+  font-size: 1.45rem;
+}
+
+.footer {
+  position: sticky;
+  top: 100vh;
+  background: var(--gradient-background);
+  padding: 25px 0;
+}
+
+.footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  font-size: 1.1rem;
+}
