@@ -1,0 +1,42 @@
+{% extends "forms.html" %}
+
+  {% block form %}
+    <form class="form" action="{{ url_for('login') }}" method="POST">
+      {{ form.hidden_tag() }}
+      <h1 class="form-header">Log in to your account</h1>
+
+      <div class="input-box">
+        {% if form.email.errors %} {{ form.email(class="input") }}
+        <div class="invalid-feedback">
+          {% for error in form.email.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        {% else %} {{ form.email(class="input") }} {% endif %}
+      </div>
+
+      <div class="input-box">
+        {% if form.password.errors %} {{ form.password(class="input") }}
+        <div class="invalid-feedback">
+          {% for error in form.password.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        {% else %} {{ form.password(class="input") }} {% endif %}
+      </div>
+
+      <div class="input-box forgot-password">
+        <a href="{{ url_for('home') }}">Forgot your password?</a>
+      </div>
+
+      <div class="input-box">
+        {{ form.submit(class="btn btn-primary submit-btn") }}
+      </div>
+    </form>
+  {% endblock form %}
+
+  {% block link_to_another_page %}
+    <p>Don't have an account? <a href="{{ url_for('signup') }}">Signup</a></p>
+  {% endblock link_to_another_page %}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+  {% block css_stylesheets %}
+    {{ super() }}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/form.css') }}"
+    />
+  {% endblock css_stylesheets %}
+
+  {% block navbar %}
+    <nav class="nav-bar">
+        <div class="container">
+          <a href="#" class="logo">Reg<span>ress</span>ors</a>
+
+          <div class="menu">
+              <a href="{{ url_for('home') }}">Go to home</a>
+          </div>
+        </div>
+      </nav>
+  {% endblock navbar %}
+
+  {% block body_content %}
+    <!-- Form header -->
+    <div class="container form-page-container">
+      <div class="left-sub-container">
+        {% block form_page_heading %}
+          <h1 class="form-page-heading">Regressors</h1>
+        {% endblock form_page_heading %} 
+        
+        {% block form_page_text %}
+          <p class="form-page-text">A community for programmers, where you can share, learn and inspire. Join with thousands of other great programmers.</p>
+        {% endblock form_page_text %}
+      </div>
+
+      <div class="right-sub-container">
+        {% block form %}{% endblock form %}
+        {% block link_to_another_page %}{% endblock link_to_another_page %}
+      </div>
+    </div>
+
+  {% endblock body_content %}

@@ -8,6 +8,9 @@
   --clr-bg: hsl(0, 0%, 99%);
   --clr-text: hsl(244, 66%, 17%);
 
+  --clr-accent: hsl(270, 84%, 87%);
+  --clr-error: hsl(0, 80%, 84%);
+
   --clr-gradient-start: hsl(218, 90%, 96%);
   --clr-gradient-end: var(--clr-bg);
 
@@ -67,6 +70,7 @@ li {
 
 a {
   text-decoration: none;
+  color: var(--clr-text);
 }
 
 section {
@@ -226,6 +230,33 @@ section h1 {
   font-size: 1.45rem;
 }
 
+.flash-messages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+.flash-message {
+  padding: 8px 30px;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 500;
+  text-align: center;
+  transition: 0.3s ease-in;
+}
+
+.flash-message.success {
+  background: var(--clr-accent);
+  color: var(--clr-primary-dark);
+}
+
+.flash-message.error {
+  background: var(--clr-error);
+  color: rgb(232, 47, 47);
+}
+
 .footer {
   position: sticky;
   top: 100vh;
@@ -240,5 +271,5 @@ section h1 {
 }
 
 .footer p {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
