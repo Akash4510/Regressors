@@ -1,0 +1,14 @@
+.about-page-section {
+  background: var(--gradient-background);
+}
+
+.about-heading {
+  font-size: 3.5rem;
+  color: var(--clr-primary);
+  margin-top: 50px;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  text-align: justify;
+}

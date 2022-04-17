@@ -38,6 +38,7 @@
           </div>
 
           <div class="menu">
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
             {% if current_user.is_authenticated %}
                 <div class="menu-icon add-post-btn"><a href="{{ url_for('add') }}"><i class="fas fa-plus"></i></a></div>
               <div class="menu-icon notifications-btn"><i class="fas fa-bell"></i></div>
@@ -68,9 +69,7 @@
       {% endwith %}
     {% endblock flash_messages %}
 
-    <section>
-        {% block body_content %}{% endblock body_content %}
-    </section>
+    {% block body_content %}{% endblock body_content %}
 
     <!-- Footer -->
     {% block footer %}

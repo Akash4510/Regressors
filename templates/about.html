@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+  {% block css_stylesheets %}
+    {{ super() }}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/about.css') }}"
+    />
+  {% endblock css_stylesheets %}
+
+  {% block body_content %}
+    <section class="about-page-section">
+      <div class="container">
+        <h1 class="about-heading">About Regressors</h1>
+        <p class="about-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, fugiat facere. Numquam facere, dicta doloribus minus molestiae incidunt libero consequuntur beatae aut quam aliquam temporibus recusandae ratione ducimus fuga fugit ea obcaecati assumenda? Aliquid dolor perferendis voluptatibus hic expedita laudantium nihil, libero obcaecati magnam esse possimus molestias assumenda unde earum?</p>
+      </div>
+    </section>
+  {% endblock body_content %}
