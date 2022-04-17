@@ -7,10 +7,19 @@
   align-items: center;
   justify-content: left;
   gap: 1rem;
-  background: var(--clr-gradient-start);
+  background: var(--gradient-background);
+  box-shadow: 0 5px 8px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
   border-radius: 10px;
   padding: 30px 30px;
   position: relative;
+}
+
+.profile-header-left,
+.profile-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 1rem;
 }
 
 .profile-header .profile-img {
@@ -40,10 +49,89 @@
   color: rgb(128, 128, 128);
 }
 
-.logout-btn {
+.profile-header-right {
+  margin-left: 80px;
+}
+
+.social-heading {
+  margin-bottom: 20px;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-icon {
+  font-size: 2rem;
+  transition: 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--clr-primary);
+  transform: scale(1.2);
+}
+
+.cv-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 80px;
+  gap: 2rem;
+}
+
+.btn-area {
   position: absolute;
   top: 20px;
   right: 20px;
+  display: flex;
+  gap: 1rem;
+}
+
+.tech-known-section {
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 8px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
+  background: var(--gradient-background);
+}
+
+.tech-known-heading {
+  margin: 10px 15px;
+  font-size: 1.85rem;
+}
+
+.tech-known-items-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  gap: 10rem;
+  padding: 20px 0;
+}
+
+.tech-known-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.tech-known-item-icon {
+  font-size: 3rem;
+  transition: 0.3s ease;
+}
+
+.tech-known-item-icon:hover {
+  color: var(--clr-primary);
+  transform: scale(1.2);
+}
+
+.tech-known-item-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--clr-text);
 }
 
 .about-heading {
@@ -56,6 +144,7 @@
 
 .projects-section {
   background: var(--gradient-background);
+  box-shadow: 0 5px 8px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.24);
   padding: 3rem 0 4rem;
 }
 
@@ -110,4 +199,29 @@
   gap: 0.5rem;
   margin-top: 15px;
   padding: 4px 10px;
+}
+
+.input-box {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  flex-direction: column;
+}
+
+.input {
+  width: 60%;
+  padding: 10px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--clr-primary);
+}
+
+.input:focus {
+  outline: 1.5px solid var(--clr-primary);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 40px;
 }

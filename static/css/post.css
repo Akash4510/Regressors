@@ -122,3 +122,10 @@
 .post-reaction-item:hover .post-reaction-item-icon {
   transform: scale(1.2);
 }
+
+.reaction-count {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--clr-primary);
+  margin-left: 15px;
+}

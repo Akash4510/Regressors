@@ -12,21 +12,100 @@
     <section class="profile-page-main-section">
       <div class="container">
         <div class="profile-header">
-          <div class="profile-img">
-            <img src="{{ url_for('static', filename='img/profile-pic.jpg') }}" alt="" />
+          <div class="profile-header-left">
+            <div class="profile-img">
+              <img src="{{ url_for('static', filename='img/profile-pic.jpg') }}" alt="" />
+            </div>
+
+            <div class="user-details">
+              <h1 class="user-name">{{ current_user.username }}</h1>
+              <h2 class="full-name">{{ current_user.first_name + ' ' + current_user.last_name }}</h2>
+              <h3 class="user-email">{{ current_user.email }}</h3>
+            </div>
           </div>
 
-          <div class="user-details">
-            <h1 class="user-name">{{ current_user.username }}</h1>
-            <h2 class="full-name">{{ current_user.first_name + ' ' + current_user.last_name }}</h1>
-            <h3 class="user-email">{{ current_user.email }}</h3>
+          <div class="profile-header-right">
+            <div class="social-area">
+              <h2 class="social-heading">Socials</h2>
+              <div class="social-icons">
+                <a href="#" class="social-icon">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div class="cv-area">
+              <a href="#" class="btn btn-primary">Download CV</a>
+              <a href="#" class="btn btn-secondary">View Projects</a>
+            </div>
           </div>
-
+          
           <!-- Create a logout button -->
-          <a href="{{ url_for('logout') }}" class="btn btn-secondary logout-btn">Logout</a>
+          <div class="btn-area">
+            <a href="{{ url_for('home') }}" class="btn btn-secondary edit-btn">Edit Profile</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary logout-btn">Logout</a>
+          </div>
         </div>
 
-        <section class="about-user">
+        <section class="tech-known-section">
+          <div class="container">
+            <h2 class="tech-known-heading">Technologies I know</h2>
+            <div class="tech-known-items-list">
+              <div class="tech-known-item">
+                <div class="tech-known-item-icon">
+                  <i class="fa-brands fa-python"></i>
+                </div>
+                <div class="tech-known-item-name">Python</div>
+              </div>
+
+              <div class="tech-known-item">
+                <div class="tech-known-item-icon">
+                  <i class="fa-brands fa-js"></i>
+                </div>
+                <div class="tech-known-item-name">JavaScript</div>
+              </div>
+
+              <div class="tech-known-item">
+                <div class="tech-known-item-icon">
+                  <i class="fa-brands fa-html5"></i>
+                </div>
+                <div class="tech-known-item-name">HTML</div>
+              </div>
+
+              <div class="tech-known-item">
+                <div class="tech-known-item-icon">
+                  <i class="fa-brands fa-css3"></i>
+                </div>
+                <div class="tech-known-item-name">CSS</div>
+              </div>
+
+              <div class="tech-known-item">
+                <div class="tech-known-item-icon">
+                  <i class="fas fa-database"></i>
+                </div>
+                <div class="tech-known-item-name">SQL</div>
+              </div>
+
+              <div class="tech-known-item">
+                <div class="tech-known-item-icon">
+                  <i class="fab fa-node-js"></i>
+                </div>
+                <div class="tech-known-item-name">Node.js</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-section">
           <div class="container">
             <h2 class="about-heading">About {{ current_user.username }}</h2>
             <p class="about-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam architecto id eum commodi! Libero a, sit officia molestiae cupiditate est placeat eveniet nisi velit optio quae ad odit? Eligendi accusamus quam suscipit, accusantium nisi reprehenderit, natus perspiciatis odit est incidunt possimus repudiandae ab! Ut reiciendis harum quae quibusdam iste. Blanditiis suscipit obcaecati totam quam alias ipsam exercitationem tenetur eum quae recusandae. Quas, repellendus vero minima, laborum dolores obcaecati excepturi cumque neque inventore tempore corrupti molestias animi provident autem officia doloremque enim, quia nisi ad error mollitia corporis? In expedita pariatur fugiat eveniet incidunt iusto, doloremque porro molestiae necessitatibus et laboriosam.</p>
@@ -94,6 +173,27 @@
                 </button>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section class="contact-section">
+          <div class="container">
+            <h1>Contact</h1>
+            <form action="{{ url_for('home') }}" method="POST">
+              <div class="input-box">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="input" placeholder="Enter your name" />
+              </div>
+              <div class="input-box">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="input" placeholder="Enter your email" />
+              </div>
+              <div class="input-box">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" class="input" placeholder="Enter your message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send</button>
+            </form>
           </div>
         </section>
 
