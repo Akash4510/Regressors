@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+  {% block css_stylesheets %}
+    {{ super() }}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/form.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/add_post.css') }}"
+    />
+  {% endblock css_stylesheets %}
+
+  {% block body_content %}
+    <div class="container add-container">
+      <form class="form add-form" action="{{ url_for('add') }}" method="POST">
+        {{ form.hidden_tag() }}
+        <h1 class="form-header">Add a new post</h1>
+
+        <div class="input-box">
+          {% if form.title.errors %} {{ form.title(class="input") }}
+          <div class="invalid-feedback">
+            {% for error in form.title.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          {% else %} {{ form.title(class="input") }} {% endif %}
+        </div>
+
+        <div class="input-box">
+          {% if form.content.errors %} {{ form.content(class="input textarea") }}
+          <div class="invalid-feedback">
+            {% for error in form.content.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          {% else %} {{ form.content(class="input textarea") }} {% endif %}
+        </div>
+
+        <div class="input-box">
+          {{ form.submit(class="btn btn-primary add-btn") }}
+        </div>
+      </form>
+    </div>
+  {% endblock body_content %}

@@ -18,9 +18,9 @@
             </div>
 
             <div class="user-details">
-              <h1 class="user-name">{{ user.username }}</h1>
-              <h2 class="full-name">{{ user.first_name + ' ' + user.last_name }}</h2>
-              <h3 class="user-email">{{ user.email }}</h3>
+              <h1 class="user-name">{{ current_user.username }}</h1>
+              <h2 class="full-name">{{ current_user.first_name + ' ' + current_user.last_name }}</h2>
+              <h3 class="user-email">{{ current_user.email }}</h3>
             </div>
           </div>
 
@@ -42,13 +42,17 @@
                 </a>
               </div>
             </div>
-            
+
             <div class="cv-area">
               <a href="#" class="btn btn-primary">Download CV</a>
               <a href="#" class="btn btn-secondary">View Projects</a>
             </div>
           </div>
 
+          <div class="btn-area">
+            <a href="{{ url_for('home') }}" class="btn btn-secondary edit-btn">Edit Profile</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-secondary logout-btn">Logout</a>
+          </div>
         </div>
 
         <section class="tech-known-section">
@@ -170,29 +174,7 @@
             </div>
           </div>
         </section>
-
-        <section class="contact-section">
-          <div class="container">
-            <h1>Contact</h1>
-            <form action="{{ url_for('home') }}" method="POST">
-              <div class="input-box">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" class="input" placeholder="Enter your name" />
-              </div>
-              <div class="input-box">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="input" placeholder="Enter your email" />
-              </div>
-              <div class="input-box">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" class="input" placeholder="Enter your message"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-          </div>
-        </section>
-
       </div>
     </section>
-      
+
   {% endblock body_content %}

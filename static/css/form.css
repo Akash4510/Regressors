@@ -84,3 +84,27 @@
   color: red;
   padding: 1px 5px;
 }
+
+.add-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-form {
+  width: 600px;
+}
+
+.textarea {
+  width: 100%;
+  resize: vertical;
+  height: 200px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--clr-primary);
+}
+
+.textarea:focus {
+  outline: 1.5px solid var(--clr-primary);
+}

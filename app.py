@@ -3,10 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_wtf import FlaskForm
 from flask_login import LoginManager, UserMixin, login_user, logout_user, current_user, login_required
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from datetime import datetime
 
+
+img_counter = 1
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "591b124ad04cd0a527c2b1b7bc186bc9"
@@ -118,6 +120,22 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label="Login")
 
 
+# Add post form
+class AddPostForm(FlaskForm):
+
+    title = StringField(
+        label="Title",
+        render_kw={"placeholder": "Enter the title"},
+        validators=[DataRequired(), Length(min=2, max=60)]
+    )
+    content = TextAreaField(
+        label="Content",
+        render_kw={"placeholder": "Enter the content"},
+        validators=[DataRequired(), Length(min=2, max=2000)]
+    )
+    submit = SubmitField(label="Add Post")
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -126,7 +144,8 @@ def load_user(user_id):
 @app.route("/")
 def home():
     posts = Post.query.all()
-    return render_template("index.html", posts=posts)
+    users = User.query.all()
+    return render_template("index.html", posts=posts, users=users)
 
 
 @app.get("/signup")
@@ -174,10 +193,38 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/profile")
+@app.route("/profile/<user_id>")
+def profile(user_id):
+    user = User.query.get(user_id)
+    return render_template("profile.html", user=user)
+
+
+@app.route("/account")
 @login_required
-def profile():
-    return render_template("profile.html")
+def account():
+    return render_template("account.html")
+
+
+@app.get("/add")
+@app.post("/add")
+@login_required
+def add():
+    form = AddPostForm()
+    if form.validate_on_submit():
+        global img_counter
+        img_counter += 1
+        image_number = img_counter % 3
+        post = Post(
+            title=form.title.data,
+            content=form.content.data,
+            post_image=image_number,
+            user_id=current_user.id
+        )
+        db.session.add(post)
+        db.session.commit()
+        flash("Post added successfully!", "success")
+        return redirect(url_for("home"))
+    return render_template("add_post.html", form=form)
 
 
 if __name__ == "__main__":

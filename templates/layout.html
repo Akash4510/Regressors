@@ -39,9 +39,10 @@
 
           <div class="menu">
             {% if current_user.is_authenticated %}
+                <div class="menu-icon add-post-btn"><a href="{{ url_for('add') }}"><i class="fas fa-plus"></i></a></div>
               <div class="menu-icon notifications-btn"><i class="fas fa-bell"></i></div>
-              <div class="profile-btn"><i class="profile-icon fas fa-user"></i><a href="{{ url_for('login') }}"><span class="user-name">{{ current_user.username }}</span></a></div>
-
+              <div class="profile-btn"><i class="profile-icon fas fa-user"></i><a href="{{ url_for('account') }}"><span class="user-name">{{ current_user.username }}</span></a></div>
+                <div class="menu-icon logout-btn"><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i></a></div>
             {% else %}
               <div class="btn btn-secondary"><a href="{{ url_for('signup') }}">Signup</a></div>
               <div class="btn btn-primary"><a href="{{ url_for('login') }}">Login</a></div>
