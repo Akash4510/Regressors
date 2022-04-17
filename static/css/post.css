@@ -138,7 +138,7 @@
   width: 350px;
   height: 100%;
   background-color: var(--clr-gradient-start);
-  padding: 20px 20px;
+  padding: 50px 20px;
 }
 
 .right-sidebar {
@@ -192,4 +192,36 @@
 
 .plus-icon {
   margin-left: 10px;
+}
+
+.header {
+  width: 600px;
+  text-align: left;
+  margin: -20px auto 15px auto;
+}
+
+.sidebar-nav-menus {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 30px 0;
+}
+
+.sidebar-nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background-color: var(--clr-secondary);
+  border: 1px solid var(--clr-primary);
+  color: var(--clr-primary-dark);
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.sidebar-nav-menu:hover span {
+  transform: scale(1.1);
 }

@@ -11,10 +11,22 @@
   {% block body_content %}
     <section class="post-section">
       <div class="left-sidebar">
-        <h2>Left sidebar</h2>
+        <h2>Welcome, {{ current_user.username }}</h2>
         <div class="sidebar-nav-menus">
           <div class="sidebar-nav-menu">
-            <i></i>
+            <span>Home</span>
+          </div>
+          <div class="sidebar-nav-menu">
+            <span>Posts</span>
+          </div>
+          <div class="sidebar-nav-menu">
+            <span>Recents</span>
+          </div>
+          <div class="sidebar-nav-menu">
+            <span>Categories</span>
+          </div>
+          <div class="sidebar-nav-menu">
+            <span>Users</span>
           </div>
         </div>
       </div>
@@ -36,10 +48,10 @@
         </div>
       </div>
       <div class="container">
+        <div class="header">
+          <h1>Recent Posts</h1>
+        </div>
         <div class="posts-container">
-          <div class="header">
-            <h1>Recent Posts</h1>
-          </div>
           {% for post in posts %}
             <div class="post">
               <div class="post-header">

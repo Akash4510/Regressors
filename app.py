@@ -213,7 +213,9 @@ def add():
     if form.validate_on_submit():
         global img_counter
         img_counter += 1
-        image_number = img_counter % 3
+        print(img_counter + 3)
+        image_number = ((img_counter + 3) % 3) + 1
+        print(image_number)
         post = Post(
             title=form.title.data,
             content=form.content.data,

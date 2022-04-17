@@ -281,12 +281,6 @@ section h1 {
   display: none;
 }
 
-.header {
-  width: 600px;
-  text-align: left;
-  margin: 15px auto 0 auto;
-}
-
 .footer {
   position: sticky;
   top: 100vh;
