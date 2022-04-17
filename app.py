@@ -196,13 +196,15 @@ def logout():
 @app.route("/profile/<user_id>")
 def profile(user_id):
     user = User.query.get(user_id)
-    return render_template("profile.html", user=user)
+    posts = Post.query.filter_by(user_id=user_id).all()
+    return render_template("profile.html", user=user, posts=posts)
 
 
 @app.route("/account")
 @login_required
 def account():
-    return render_template("account.html")
+    posts = Post.query.filter_by(user_id=current_user.id).all()
+    return render_template("account.html", posts=posts)
 
 
 @app.get("/add")
@@ -227,6 +229,20 @@ def add():
         flash("Post added successfully!", "success")
         return redirect(url_for("home"))
     return render_template("add_post.html", form=form)
+
+
+@app.route("/delete/<post_id>")
+@login_required
+def delete_post(post_id):
+    post = Post.query.get(post_id)
+    if post.user_id == current_user.id:
+        db.session.delete(post)
+        db.session.commit()
+        flash("Post deleted successfully!", "success")
+        return redirect(url_for("home"))
+    else:
+        flash("You are not authorized to delete this post!", "error")
+        return redirect(url_for("home"))
 
 
 if __name__ == "__main__":

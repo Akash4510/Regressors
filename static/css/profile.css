@@ -231,3 +231,7 @@ textarea {
   resize: vertical;
   min-height: 40px;
 }
+
+.delete-btn {
+  margin-left: 330px;
+}

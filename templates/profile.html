@@ -4,6 +4,10 @@
     {{ super() }}
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='css/post.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/profile.css') }}"
     />
   {% endblock css_stylesheets %}
@@ -108,7 +112,7 @@
 
         <section class="about-section">
           <div class="container">
-            <h2 class="about-heading">About {{ current_user.username }}</h2>
+            <h2 class="about-heading">About {{ user.username }}</h2>
             <p class="about-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam architecto id eum commodi! Libero a, sit officia molestiae cupiditate est placeat eveniet nisi velit optio quae ad odit? Eligendi accusamus quam suscipit, accusantium nisi reprehenderit, natus perspiciatis odit est incidunt possimus repudiandae ab! Ut reiciendis harum quae quibusdam iste. Blanditiis suscipit obcaecati totam quam alias ipsam exercitationem tenetur eum quae recusandae. Quas, repellendus vero minima, laborum dolores obcaecati excepturi cumque neque inventore tempore corrupti molestias animi provident autem officia doloremque enim, quia nisi ad error mollitia corporis? In expedita pariatur fugiat eveniet incidunt iusto, doloremque porro molestiae necessitatibus et laboriosam.</p>
           </div>
         </section>
@@ -195,6 +199,73 @@
               </div>
               <button type="submit" class="btn btn-primary">Send</button>
             </form>
+          </div>
+        </section>
+
+        <section class="posts-section">
+          <div class="container">
+            <div class="header">
+              <h1>Latest posts by {{ user.username }}</h1>
+            </div>
+            <div class="posts-container">
+              {% for post in posts %}
+                <div class="post">
+                  <div class="post-header">
+                    <div class="post-author-profile-img">
+                      <a href="{{ url_for('profile', user_id=post.author.id) }}"
+                        ><img
+                          src="{{ url_for('static', filename='img/profile-pic.jpg') }}"
+                          alt=""
+                      /></a>
+                    </div>
+                    <div class="post-info">
+                      <a href="{{ url_for('profile', user_id=post.author.id) }}" class="post-author-name">{{ post.author.username }}</a>
+                      <span class="post-date">{{ post.date_posted.strftime('%d-%m-%Y') }}</span>
+                    </div>
+                  </div>
+                  <div class="post-img">
+                    <img src="{{ url_for('static', filename='img/img-' + post.post_image + '.jpg') }}" alt="" />
+                  </div>
+                  <div class="post-content">
+                    <div class="post-title">
+                      <h2>{{ post.title }}</h2>
+                    </div>
+                    <div class="post-text">
+                      <p>
+                          {{ post.content }}
+                      </p>
+                    </div>
+                    <div class="post-reaction">
+                      <div class="post-reaction-item">
+                        <div class="post-reaction-item-icon">
+                          <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="post-reaction-item-text">
+                          <span>Like</span>
+                          <span class="reaction-count likes-count">23</span>
+                        </div>
+                      </div>
+                      <div class="post-reaction-item">
+                        <div class="post-reaction-item-icon">
+                          <i class="fas fa-thumbs-down"></i>
+                        </div>
+                        <div class="post-reaction-item-text">
+                          <span>Dislike</span>
+                        </div>
+                      </div>
+                      <div class="post-reaction-item">
+                        <div class="post-reaction-item-icon">
+                          <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="post-reaction-item-text">
+                          <span>Comment</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
           </div>
         </section>
 
