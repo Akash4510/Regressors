@@ -99,7 +99,7 @@
 
 .tech-known-heading {
   margin: 10px 15px;
-  font-size: 1.85rem;
+  font-size: 1.5rem;
 }
 
 .tech-known-items-list {
@@ -119,7 +119,7 @@
 }
 
 .tech-known-item-icon {
-  font-size: 3rem;
+  font-size: 2rem;
   transition: 0.3s ease;
 }
 
@@ -132,6 +132,12 @@
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--clr-text);
+}
+
+.tech-known-item-experience {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #828282;
 }
 
 .about-heading {

@@ -11,7 +11,7 @@
   {% block body_content %}
     <section class="post-section">
       <div class="left-sidebar">
-        <h2>Welcome, {{ current_user.username }}</h2>
+        <h2>Welcome {{ current_user.first_name }}</h2>
         <div class="sidebar-nav-menus">
           <div class="sidebar-nav-menu">
             <span>Home</span>
@@ -28,22 +28,27 @@
           <div class="sidebar-nav-menu">
             <span>Users</span>
           </div>
+          <div class="sidebar-nav-menu">
+            <span>Forum</span>
+          </div>
         </div>
       </div>
       <div class="right-sidebar">
         <h2>Connect with others</h2>
         <div class="users-list">
           {% for user in users %}
-            <div class="user">
-              <div class="user-img-and-name">
-                <img class="user-img" src="{{ url_for('static', filename='img/profile-pic.jpg') }}" alt="" />
-                <div class="user-name-and-email">
-                  <a href="{{ url_for('profile', user_id=user.id) }}"><h3 class="user-username">{{ user.username }}</h3></a>
-                  <a href="{{ url_for('profile', user_id=user.id) }}"><h4 class="user-email">{{ user.email }}</h4></a>
+            {% if user.id != current_user.id %}
+              <div class="user">
+                <div class="user-img-and-name">
+                  <img class="user-img" src="{{ url_for('static', filename='img/profile-pic.jpg') }}" alt="" />
+                  <div class="user-name-and-email">
+                    <a href="{{ url_for('profile', user_id=user.id) }}"><h3 class="user-username">{{ user.username }}</h3></a>
+                    <a href="{{ url_for('profile', user_id=user.id) }}"><h4 class="user-email">{{ user.email }}</h4></a>
+                  </div>
                 </div>
+                <a href="#" class="btn btn-secondary follow-btn">Follow<span class="plus-icon"><i class="fa-solid fa-plus"></i></span></a>
               </div>
-              <a href="#" class="btn btn-secondary follow-btn">Follow<span class="plus-icon"><i class="fa-solid fa-plus"></i></span></a>
-            </div>
+           {% endif %}
           {% endfor %}
         </div>
       </div>
